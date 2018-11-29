@@ -1,4 +1,23 @@
+import com.google.gson.Gson;
+
+import java.util.List;
+
 public class Places {
+
+
+    private static Places uniqueInstance = new Places();
+    private String name;
+    private double cost;
+    private int arrivedTime;
+    private int departedTime;
+
+
+    private Places() { }
+
+    public static Places getInstance(){
+        return uniqueInstance;
+    }
+
     public String getName() {
         return name;
     }
@@ -7,42 +26,27 @@ public class Places {
         return cost;
     }
 
-    public String getArrivedOn() {
-        return arrivedOn;
-    }
-
-    public String getDepartedOn() {
-        return departedOn;
-    }
-
-    public String getArrivedTime() {
+    public int getArrivedTime() {
         return arrivedTime;
     }
 
-    public String getDepartedTime() {
+    public void setArrivedTime(int arrivedTime) {
+        this.arrivedTime = arrivedTime;
+    }
+
+    public int getDepartedTime() {
         return departedTime;
     }
 
-    public Transportation getTransportation() {
-        return transportation;
+    public void setDepartedTime(int departedTime) {
+        this.departedTime = departedTime;
     }
 
-    private String name;
-    private double cost;
-    private String arrivedOn;
-    private String departedOn;
-    private String arrivedTime;
-    private String departedTime;
-    private Transportation transportation;
-
-
-    public Places(String name, double cost, String arrivedOn, String departedOn, String arrivedTime, String departedTime, Transportation transportation) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setCost(double cost) {
         this.cost = cost;
-        this.arrivedOn = arrivedOn;
-        this.departedOn = departedOn;
-        this.arrivedTime = arrivedTime;
-        this.departedTime = departedTime;
-        this.transportation = transportation;
     }
 }
