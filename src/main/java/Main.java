@@ -7,18 +7,23 @@ public class Main {
 //    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        serialization();
+        //serialization();
+        deSerialization();
 
     }
 
     private static void serialization() {
-        Places places = new Places("Los Angeles Airport", 4000.00, "12/5", "12/29", "11:00AM", "9:00AM", "AirPlane");
+        Places places = new Places("Los Angeles Airport", 4000.00, "12/5", "12/29", "11:00AM", "9:00AM", Transportation.AirPlane);
         Gson gson = new Gson();
         String output = gson.toJson(places);
-        StringBuilder sb = new StringBuilder(output);
-        String out = sb.toString(output.);
-        System.out.println(out);
     }
+
+    private static void deSerialization(){
+        String los_angeles_airport = "{'name':'Los Angeles Airport','cost':4000.0,'arrivedOn':'12/5','departedOn':'12/29','arrivedTime':'11:00AM','departedTime':'9:00AM','transportation':'AirPlane'}";
+        Gson gson = new Gson();
+        Places places = gson.fromJson(los_angeles_airport,Places.class);
+    }
+
     //state loop will handle traversing through
         //the various states until the user
         //decides to return later (exit state loop with trip
