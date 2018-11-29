@@ -71,10 +71,8 @@ public class TripStateAddDestinations extends TripState{
         Boolean getDestinations = true;
         while (getDestinations)
         {
-            System.out.println("Departure From: ");
+            System.out.println("Enter a Destination: ");
             String newDestination = scanner.nextLine().trim();
-
-
 
             //come back later?
             if (returnLater(newDestination)){
@@ -86,8 +84,23 @@ public class TripStateAddDestinations extends TripState{
             {
                 if (isDestinationValid(newDestination))
                 {
-                    getTripContext().getTrip().getDestinations().add(newDestination);
-                    System.out.println("- Added destination [" + newDestination + "]");
+                    System.out.println("Departure From: ");
+                    String departure = new Scanner(System.in).nextLine();
+                    System.out.println("Enter a departure Date: ");
+                    String departDate = new Scanner(System.in).nextLine();
+                    System.out.println("Enter an arrival Date: ");
+                    String returnDate = new Scanner(System.in).nextLine();
+                    System.out.println("Enter the type of Transportation");
+                    String transportation = new Scanner(System.in).nextLine();
+                    System.out.println("Availiable Package:");
+                    Packages packages = new Packages(newDestination,departDate,returnDate,transportation,departure);
+                    getTripContext().getTrip().getDestinations().add(packages.get_packages().get(packages.get_packages().size()-1));
+                    System.out.println("Select a package:");
+                    int answer = new Scanner(System.in).nextInt();
+
+                    if(answer != 0) {
+                        System.out.println("- Added destination [" + newDestination + "]");
+                    }
 
                 }
 

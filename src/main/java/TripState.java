@@ -4,7 +4,6 @@
 //Holds reference to TripContext.
 public abstract class TripState {
     private TripContext _tripContext;
-
     protected TripState(TripContext tripContext, Status tripStateStatus){
         _tripContext = tripContext;
 

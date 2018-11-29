@@ -19,10 +19,15 @@ public class TripStatePayCash extends TripState {
         System.out.println("- COMMAND: [later] to return later or amount");
         System.out.println();
 
-
         //fake
-        getTripContext().getTrip().setPayment(new PaymentCash(BigDecimal.valueOf(10000)));
-        System.out.println("Paid $10000 cash");
+        getTripContext().getTrip().setPayment(new PaymentCash(BigDecimal.valueOf(Packages.getTotalAmount())));
+        System.out.println("Amount Due: "+"$"+ Packages.getTotalAmount());
+        System.out.println("Enter Amount: ");
+        double input = new Scanner(System.in).nextDouble();
+        if(input != Packages.getTotalAmount())
+        {
+            System.out.println("Enter the correct amount!");
+        }
 
         getTripContext().changeState(new TripStateAddThankYou(getTripContext()));
         return TripStateLoop.Status.Continue;

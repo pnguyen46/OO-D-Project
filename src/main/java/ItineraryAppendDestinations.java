@@ -19,6 +19,7 @@ public class ItineraryAppendDestinations extends ItineraryDecorator {
         for(int destination = 0; destination < getTrip().getDestinations().size(); destination++){
             toOutput.append(destination + 1);
             toOutput.append(". ");
+            toOutput.append(getTrip().getDestinations().get(destination));
             toOutput.append(System.lineSeparator());
         }
 
